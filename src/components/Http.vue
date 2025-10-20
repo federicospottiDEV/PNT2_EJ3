@@ -53,6 +53,7 @@ export default {
     methods: {
         async obtener() {
             try {
+       //endpoint fede
                 const response = await axios.get('https://68f58e186b852b1d6f145bd0.mockapi.io/usuarios/usuarios')
                 this.usuarios = response.data
             } catch (error) {
