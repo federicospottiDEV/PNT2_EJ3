@@ -1,0 +1,79 @@
+<section class="card">
+    <div class="card-header">
+        <h3>Formulario de Usuarios</h3>
+    </div>
+
+    <div class="card-body">
+        <form novalidate @submit.prevent="enviar()">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input 
+                    id="nombre" 
+                    type="text" 
+                    class="form-control" 
+                    v-model.trim="formData.nombre"
+                    @input="formDirty.nombre=true"
+                >
+                <div v-if="errorNombre.mostrar" class="alert alert-danger my-1">
+                    {{ errorNombre.mensaje }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="edad">Edad</label>
+                <input 
+                    id="edad" 
+                    type="number" 
+                    class="form-control" 
+                    v-model.number="formData.edad"
+                    @input="formDirty.edad=true"
+                >
+                <div v-if="errorEdad.mostrar" class="alert alert-danger my-1">
+                    {{ errorEdad.mensaje }}
+                </div>                 
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input 
+                    id="email" 
+                    type="email" 
+                    class="form-control" 
+                    v-model.trim="formData.email"
+                    @input="formDirty.email=true"
+                >
+                <div v-if="errorEmail.mostrar" class="alert alert-danger my-1">
+                    {{ errorEmail.mensaje }}
+                </div>                 
+            </div>
+            
+            <button class="btn btn-success my-3" :disabled="botonEnvioDeshabilitado()">Enviar</button>
+
+        </form>
+
+        <hr>
+        
+        <div v-if="usuarios.length > 0">
+            <h4>Usuarios Registrados</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Edad</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(usuario, index) in usuarios" :key="index">
+                            <td>{{ usuario.nombre }}</td>
+                            <td>{{ usuario.edad }}</td>
+                            <td>{{ usuario.email }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,10 @@
+/* Estilos del componente */
+.card-header {
+  background-color: brown;
+  color: white;
+}
+
+label {
+    text-transform: capitalize;
+    margin-top: 10px;
+}
